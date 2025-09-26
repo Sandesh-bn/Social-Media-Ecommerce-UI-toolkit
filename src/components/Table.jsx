@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Table.css';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 export function Table() {
     const data = [
         {
@@ -35,12 +35,13 @@ export function Table() {
         },
     ]
 
+    console.log('rendered')
     const [searchTerm, setSearchTerm] = useState('')
     const [filteredData, setFilteredData] = useState(data.sort((a, b) => a.id.localeCompare(b.id)));
     const [isAscending, setIsAscending] = useState(true);
-    const [sortBy, setSortBy] = useState('id');
+    const [sortAttribute, setSortAttribute] = useState('id');
 
-    function handleSearch(e){
+    function handleSearch(e) {
         let searchValue = e.target.value;
         setSearchTerm(searchValue);
         let query = searchValue.trim();
@@ -48,18 +49,71 @@ export function Table() {
         setFilteredData(newData)
     }
 
-    function handleSort(sortBy){
-        
+    function handleSort(sortBy) {
+        let newData = [...filteredData];
+        if (sortBy == 'id') {
+            if (sortAttribute == 'id') {
+                changeSortOrder();
+                return;
+            }
+            newData.sort((a, b) => a.id.localeCompare(b.id))
+        }
+        else if (sortBy == 'amount') {
+            if (sortAttribute == 'amount') {
+                changeSortOrder();
+                return;
+            }
+            newData.sort((a, b) => parseInt(a.amount) - parseInt(b.amount))
+            setSortAttribute('amount')
+        }
+        else if (sortBy == 'status') {
+            if (sortAttribute == 'status'){
+                changeSortOrder();
+                return;
+            }
+            newData.sort((a, b) => a.status.localeCompare(b.status))
+            setSortAttribute('status')
+        }
+        else if (sortBy == 'email') {
+            if (sortAttribute == 'email'){
+                changeSortOrder();
+                return;
+            }
+            newData.sort((a, b) => a.email.localeCompare(b.email));
+            setSortAttribute('email')
+        }
+        setFilteredData(newData)
     }
+
+    function changeSortOrder() {
+        let newData = [...filteredData];
+        newData.reverse();
+        setFilteredData(newData);
+        setIsAscending(prev => !prev)
+    }
+
+
     return (
         <div className='table-container'>
-            <input className='search-box' placeholder='Search email..' value={searchTerm} onChange={handleSearch}/>
+            <input className='search-box' placeholder='Search email..' value={searchTerm} onChange={handleSearch} />
             <table>
                 <tr>
-                    <th>ID <ArrowDown size={15}/></th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Email</th>
+                    <th>
+                        <span onClick={() => handleSort('id')}>ID</span>
+                        {sortAttribute == 'id' && (isAscending? <ArrowDown size={15}/>: <ArrowUp size={15}/>)}
+                    </th>
+                    <th>
+                        <span onClick={() => handleSort('amount')}>Amount</span>
+                        {sortAttribute == 'amount' && (isAscending? <ArrowDown size={15}/>: <ArrowUp size={15}/>)}
+                    </th>
+                    <th>
+                        <span onClick={() => handleSort('status')}>Status</span>
+                        {sortAttribute == 'status' && (isAscending? <ArrowDown size={15}/>: <ArrowUp size={15}/>)}
+                    </th>
+                    <th>
+                        <span onClick={() => handleSort('email')}>Email</span>
+                        {sortAttribute == 'email' && (isAscending? <ArrowDown size={15}/>: <ArrowUp size={15}/>)}
+                    </th>
                 </tr>
                 {filteredData.map((row, index) => (
                     <tr>
