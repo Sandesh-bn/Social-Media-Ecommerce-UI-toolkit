@@ -5,6 +5,7 @@ import { HoverCard } from './components/HoverCard';
 import { ImageSlider } from './components/ImageSlider';
 import { Table } from './components/Table';
 import { Popover } from './components/Popover';
+import { ProgressBar } from './components/ProgressBar';
 function App() {
   return (
     <div className="App">
@@ -13,7 +14,8 @@ function App() {
       {/* <Table/> */}
       {/* <Drawer/> */}
       {/* <HoverCard/> */}
-      <Popover/>
+      {/* <Popover/> */}
+      <ProgressBar/>
     </div>
   );
 }
