@@ -22,9 +22,9 @@ export function Drawer() {
     return (
         <div className='drawer-container'  >
             {isVisible ? <button className="user-button" onClick={() => setIsVisible(false)}>Hide Drawer</button> : <button className="user-button" onClick={() => setIsVisible(true)}>Show Drawer</button>}
-            {
-                isVisible &&
-                <div className="drawer">
+            
+            
+                <div className={isVisible? "drawer open": "drawer"}>
                     {/* <button   onClick={() => setIsVisible(false)} className="close-button"><X size={15}/></button> */}
                     <h2>Set your calorie count</h2>
                     <p>Daily calorie intake</p>
@@ -32,7 +32,7 @@ export function Drawer() {
                     <button className="user-button">Submit</button>
                     <button className="user-button">Cancel</button>
                 </div>
-            }
+            
         </div>
     )
 }
