@@ -11,6 +11,8 @@ import { LiquidGlassButton } from './components/LiquidGlassButton';
 import { TestimonialCard } from './components/TestimonialCard';
 import { ProfileCard } from './components/ProfileCard';
 import { ProductReview } from './components/ProductReview';
+import CardSlider from './components/CardSlider';
+import Imagecarousel from './components/ImageCarousel';
 function App() {
   return (
     <div className="App">
@@ -25,7 +27,8 @@ function App() {
       {/* <Card/> */}
       {/* <TestimonialCard/> */}
       {/* <ProfileCard/> */}
-      <ProductReview/>
+      {/* <ProductReview/> */}
+      <Imagecarousel/>
     </div>
   );
 }

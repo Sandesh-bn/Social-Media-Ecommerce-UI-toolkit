@@ -2,9 +2,22 @@
     display: flex;
     height: 100vh;
     padding: 0px 50px;
+    gap: 40px;
 }
 
+.product-review-summary-column {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
 .user-review-column {
-   overflow: scroll;
-   
+   overflow: scroll;  
+}
+
+.sortby-row {
+    text-align: left;
+}
+
+.sortby-row select {
+    padding: 10px;
 }
