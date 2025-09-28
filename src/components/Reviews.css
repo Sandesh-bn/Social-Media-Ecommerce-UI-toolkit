@@ -1,0 +1,22 @@
+.review-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 50px 0px;
+}
+
+.reviewer-content {
+    text-align: left;
+}
+
+.reviewer-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.review-date {
+    font-size: 15px;
+}

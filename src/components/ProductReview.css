@@ -1,0 +1,10 @@
+.product-review-container {
+    display: flex;
+    height: 100vh;
+    padding: 0px 50px;
+}
+
+.user-review-column {
+   overflow: scroll;
+   
+}

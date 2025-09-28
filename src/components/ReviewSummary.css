@@ -1,0 +1,22 @@
+.review-summary-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.review-summary-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.review-summary-row div {
+    width: 150px;
+    text-align: left;
+}
+
+.ratings-row {
+    display: flex;
+    gap: 10px;
+}
