@@ -13,53 +13,80 @@ import { ProfileCard } from './components/ProfileCard';
 import { ProductReview } from './components/ProductReview';
 import Imagecarousel from './components/ImageCarousel';
 import { defaultReviews } from './assets/data/defaultReviews';
-import { Home } from './components/Home';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      {/* <Home/> */}
-       
-        <Router>
-            <div style={{ display: "flex", height: "30vh" }}>
-                <nav style={{ width: "150px", background: "", color: "#fff", padding: "1rem" }}>
-
-                    <div style={{ display: "flex", flexDirection: 'column', gap: '10px' }}>
-                        
-                        <Link to="/imagecarousel" style={{ color: "black" }}>Carousel</Link>
-                        <Link to="/" style={{ color: "black" }}>Accordion</Link>
-                        <Link to="/table" style={{ color: "black" }}>Table</Link>
-                        <Link to="/hovercard" style={{ color: "black" }}>Hover Card</Link>
-                        <Link to="/popover" style={{ color: "black" }}>Popover</Link>
-                        <Link to="/progressbar" style={{ color: "black" }}>Progress Bar</Link>
-                        <Link to="/testimonial" style={{ color: "black" }}>Testimonial</Link>
-                        <Link to="/profile" style={{ color: "black" }}>Profile Card</Link>
-                        <Link to="/productreview" style={{ color: "black" }}>Product Review</Link>
-                        <Link to="/imagegallery" style={{ color: "black" }}>Image Gallery</Link>
-                        <Link to="/drawer" style={{ color: "black" }}>Drawer</Link>
-                    </div>
-                </nav>
-
-                {/* Main content */}
-                <div style={{ flex: 1, maxWidth: '80%' }}>
-                    <Routes>
-                        <Route path={"/imagecarousel"} element={<Imagecarousel />} />
-                        <Route path="/" element={<Accordion />} />
-                        <Route path="/table" element={<Table />} />
-                        <Route path="/drawer" element={<Drawer />} />
-                        <Route path="/hovercard" element={<HoverCard />} />
-                        <Route path="/popover" element={<Popover />} />
-                        <Route path="/progressbar" element={<ProgressBar />} />
-                        <Route path="/testimonial" element={<TestimonialCard />} />
-                        <Route path="/profile" element={<ProfileCard />} />
-                        <Route path="/productreview" element={<ProductReview reviews={defaultReviews} />} />
-                        <Route path="/imagegallery" element={<ImageSlider />} />
-                    </Routes>
-                </div>
+      <Router>
+        <div style={{ display: "flex", height: "30vh" }}>
+          <nav style={{ width: "150px", padding: "1rem" }}>
+            <div style={{ display: "flex", flexDirection: 'column', gap: '10px' }}>
+              <NavLink to="/imagecarousel" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Carousel
+              </NavLink>
+              <NavLink to="/" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Accordion
+              </NavLink>
+              <NavLink to="/table" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Table
+              </NavLink>
+              <NavLink to="/hovercard" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Hover Card
+              </NavLink>
+              <NavLink to="/popover" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Popover
+              </NavLink>
+              <NavLink to="/progressbar" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Progress Bar
+              </NavLink>
+              <NavLink to="/testimonial" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Testimonial
+              </NavLink>
+              <NavLink to="/profile" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Profile Card
+              </NavLink>
+              <NavLink to="/productreview" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Product Review
+              </NavLink>
+              <NavLink to="/imagegallery" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Image Gallery
+              </NavLink>
+              <NavLink to="/drawer" 
+                style={({ isActive }) => ({ color: isActive ? "rgb(3, 79, 244)" : "black" })}>
+                Drawer
+              </NavLink>
             </div>
-        </Router>
-    
+          </nav>
+
+          {/* Main content */}
+          <div style={{ flex: 1, maxWidth: '80%' }}>
+            <Routes>
+              <Route path={"/imagecarousel"} element={<Imagecarousel />} />
+              <Route path="/" element={<Accordion />} />
+              <Route path="/table" element={<Table />} />
+              <Route path="/drawer" element={<Drawer />} />
+              <Route path="/hovercard" element={<HoverCard />} />
+              <Route path="/popover" element={<Popover />} />
+              <Route path="/progressbar" element={<ProgressBar />} />
+              <Route path="/testimonial" element={<TestimonialCard />} />
+              <Route path="/profile" element={<ProfileCard />} />
+              <Route path="/productreview" element={<ProductReview reviews={defaultReviews} />} />
+              <Route path="/imagegallery" element={<ImageSlider />} />
+            </Routes>
+          </div>
+        </div>
+      </Router>
     </div>
   );
 }
