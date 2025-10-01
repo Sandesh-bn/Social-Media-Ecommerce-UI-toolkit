@@ -1,26 +1,19 @@
-import './App.css';
-import { Accordion } from './components/Accordion';
-import { Drawer } from './components/Drawer';
-import { HoverCard } from './components/HoverCard';
-import { ImageSlider } from './components/ImageSlider';
-import { Table } from './components/Table';
-import { Popover } from './components/Popover';
-import { ProgressBar } from './components/ProgressBar';
-import { SideBarDemo } from './components/SidebarDemo';
-import { LiquidGlassButton } from './components/LiquidGlassButton';
-import { TestimonialCard } from './components/TestimonialCard';
-import { ProfileCard } from './components/ProfileCard';
-import { ProductReview } from './components/ProductReview';
-import Imagecarousel from './components/ImageCarousel';
-import { defaultReviews } from './assets/data/defaultReviews';
-import { Home } from './components/Home';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Accordion } from "./Accordion";
+import { Table } from "./Table";
+import { HoverCard } from "./HoverCard";
+import { Popover } from "./Popover";
+import { ProgressBar } from "./ProgressBar";
+import { TestimonialCard } from "./TestimonialCard";
+import { ProfileCard } from "./ProfileCard";
+import { ProductReview } from "./ProductReview";
+import Imagecarousel from "./ImageCarousel";
+import { ImageSlider } from "./ImageSlider";
+import { Drawer } from "./Drawer";
+import { defaultReviews } from '../assets/data/defaultReviews';
 
-function App() {
-  return (
-    <div className="App">
-      {/* <Home/> */}
-       
+export function Home() {
+    return (
         <Router>
             <div style={{ display: "flex", height: "30vh" }}>
                 <nav style={{ width: "150px", background: "", color: "#fff", padding: "1rem" }}>
@@ -59,9 +52,6 @@ function App() {
                 </div>
             </div>
         </Router>
-    
-    </div>
-  );
+    );
 }
 
-export default App;

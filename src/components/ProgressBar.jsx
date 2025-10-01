@@ -100,11 +100,3 @@ export function ProgressBar() {
         </div>
     )
 }
-
-/*
-    auto progress bar
-    manual increment
-    color change animation
-    circular
-
-*/

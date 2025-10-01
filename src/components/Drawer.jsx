@@ -4,15 +4,13 @@ import { Plus, X, Minus } from "lucide-react";
 import './Drawer.css';
 
 function Counter({ count, setCount}) {
-    
-    return (
 
+    return (
         <div className="counter">
             <button onClick={() => setCount(Math.max(0, count - 1))}><Minus size={15} /></button>
             <span className="count">{count}</span>
             <button onClick={() => setCount(Math.min(5000, count + 1))}><Plus size={15} /></button>
         </div>
-
     )
 }
 

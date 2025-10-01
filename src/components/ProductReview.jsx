@@ -60,8 +60,6 @@ export function ProductReview(props) {
             date: new Date(Date.now()),
             rating: userRating
         }
-        console.log("ro");
-        console.log(reviewObject);
         let newproductReviews = [reviewObject, ...productReviews];
         setProductReview(newproductReviews);
     }
