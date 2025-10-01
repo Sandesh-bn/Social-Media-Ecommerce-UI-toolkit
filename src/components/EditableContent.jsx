@@ -39,7 +39,7 @@ export default function EditableContent({ placeholder = '', handleSubmit = (valu
       {/* <p style={{ marginTop: "1rem" }}>
         <strong>Preview:</strong> {text}
       </p> */}
-      <button className="editable-submit" onClick={() => handleSubmit(text)}>Submit Review</button>
+      <button disabled={ text.length == 0} className="editable-submit" onClick={() => handleSubmit(text)}>Submit Review</button>
     </div>
   );
 }

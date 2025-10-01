@@ -10,6 +10,9 @@
     text-align: left;
 }
 
+.reviewer-name {
+    text-align: left;
+}
 .reviewer-row {
     display: flex;
     flex-direction: row;

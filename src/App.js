@@ -11,12 +11,12 @@ import { LiquidGlassButton } from './components/LiquidGlassButton';
 import { TestimonialCard } from './components/TestimonialCard';
 import { ProfileCard } from './components/ProfileCard';
 import { ProductReview } from './components/ProductReview';
-import CardSlider from './components/CardSlider';
 import Imagecarousel from './components/ImageCarousel';
+import { defaultReviews } from './assets/data/defaultReviews';
 function App() {
   return (
     <div className="App">
-      {/* <ImageSlider/> */}
+      {/* <Imagecarousel/> */}
       {/* <Accordion/> */}
       {/* <Table/> */}
       {/* <Drawer/> */}
@@ -24,11 +24,10 @@ function App() {
       {/* <Popover/> */}
       {/* <ProgressBar/> */}
       {/* <SideBarDemo/> */}
-      {/* <Card/> */}
       {/* <TestimonialCard/> */}
       {/* <ProfileCard/> */}
-      {/* <ProductReview/> */}
-      <Imagecarousel/>
+      <ProductReview reviews={defaultReviews}/>
+      {/* <ImageSlider/> */}
     </div>
   );
 }

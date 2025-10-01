@@ -8,16 +8,15 @@
 */
 
 import { useEffect, useState } from "react";
-import { defaultReviews } from '../assets/data/defaultReviews';
 import { ReviewSummary } from "./ReviewSummary";
 import { Reviews } from "./Reviews";
 import './ProductReview.css';
 import EditableContent from "./EditableContent";
+import { StarRating } from "./StarRating";
 
-
-export function ProductReview(props) {
-    defaultReviews.sort((a, b) => b.date - a.date)
-    let { productImage, productTitle, reviews = defaultReviews } = props;
+export function ProductReview(props) {  
+    let { productImage, productTitle, reviews = [] } = props;
+    reviews.sort((a, b) => b.date - a.date)
     const [productReviews, setProductReview] = useState(reviews);
     let [newReview, setReview] = useState('')
     let sortByAttributes = [
@@ -29,14 +28,7 @@ export function ProductReview(props) {
 
         
     const [sortBy, setSortBy] = useState('date');
-
-    useEffect(() => {
-        
-    }, [reviews]);
-
-    function addReview(review) {
-
-    }
+    const [userRating, setUserRating] = useState(1);
 
     useEffect(() => {
         console.log(sortBy)
@@ -58,6 +50,7 @@ export function ProductReview(props) {
     }, [sortBy]);
 
     function createReview(value){
+        console.log("cr", userRating)
         value = value.trim();
         if (value.length < 1)
             return;
@@ -65,14 +58,19 @@ export function ProductReview(props) {
             name: "New User",
             userReview: value,
             date: new Date(Date.now()),
-            rating: 5
+            rating: userRating
         }
-
+        console.log("ro");
+        console.log(reviewObject);
         let newproductReviews = [reviewObject, ...productReviews];
         setProductReview(newproductReviews);
-        console.log('sorb:', sortBy)
-        console.log("nextlin")
     }
+
+    function handleRating(rating){
+        setUserRating(parseInt(rating));
+    }
+
+
     return (
         <div className="product-review-container">
             <div className="product-review-summary-column">
@@ -85,8 +83,9 @@ export function ProductReview(props) {
                         ))}
                     </select>
                 </div>
+                 <StarRating handleRating={handleRating} />
                 <EditableContent handleSubmit={createReview} placeholder="Submit review"/>
-                
+               
             </div>
             
             {/* <ReviewCreator review={} rating={} user={}/> */}

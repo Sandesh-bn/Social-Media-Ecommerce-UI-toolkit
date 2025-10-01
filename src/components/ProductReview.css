@@ -8,7 +8,7 @@
 .product-review-summary-column {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
 }
 .user-review-column {
    overflow: scroll;  

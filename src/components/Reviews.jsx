@@ -18,7 +18,7 @@ export function Reviews({ productReviews }) {
             <div className="review-item">
                 <div className="reviewer-row">
                     <div>
-                        <div><b>{name}</b></div>
+                        <div className="reviewer-name"><b>{name}</b></div>
                         <div>
                             {[0, 1, 2, 3, 4].map((item, i) => (
                                 (i < rating) ? <span><FilledStar /></span> : <span><UnfilledStar /></span>

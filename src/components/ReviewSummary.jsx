@@ -5,6 +5,7 @@ import { FilledStar } from "./FilledStar";
 import { UnfilledStar } from "./UnfilledStar";
 export function ReviewSummary(props) {
     const { productReviews } = props;
+    
     let reviewCount = 0;
     let averageOfAllReviews = 0;
     let sumOfAllReviews = 0;
@@ -15,11 +16,13 @@ export function ReviewSummary(props) {
     let poorReviewCount = 0;
     let reviewSummaryDetails = [];
     const [reviewSummaryData, setReviewSummaryData] = useState([]);
-    const [totalReview, setTotalReview] = useState(0);
+    const totalReview = productReviews.length;
+    console.log("inside review summar", productReviews.length)
+    console.log("inside review summar tr", totalReview)
     const [overallAverage, setOverallAverage] = useState(0);
 
     useEffect(() => {
-
+        console.log('useffect $$$')
         for (const review of productReviews) {
             reviewCount++;
             let rating = review.rating;
@@ -45,17 +48,15 @@ export function ReviewSummary(props) {
             { "reviewType": "Poor", "count": poorReviewCount, color: "red" }
         ]
         setReviewSummaryData(reviewSummaryDetails);
-        setTotalReview(reviewCount);
         setOverallAverage(averageOfAllReviews)
-    }, []);
+    }, [productReviews]);
 
-    console.log('avg ', overallAverage)
     return (
         <div className="review-summary-container">
             <div><b>Overall Ratings</b></div>
             
             <div className="ratings-row">
-                <div>{overallAverage}</div>
+                <div>{overallAverage.toFixed(2)}</div>
                 <div>
                     {[0, 1, 2, 3, 4].map((item, i) => (
                         (i <= overallAverage) ? <span><FilledStar /></span> : <span><UnfilledStar /></span>
@@ -70,7 +71,8 @@ export function ReviewSummary(props) {
                 <div className="review-summary-row">
                     <div>{reviewdata.reviewType}</div>
                     <BasicProgressBar currentProgress={reviewdata.count} totalProgress={totalReview} color={reviewdata.color} />
-                    <div>{(reviewdata.count/totalReview) * 100}%</div>
+                    {/* <div>{Math.floor((reviewdata.count/totalReview) * 100)}%</div> */}
+                    <div>{reviewdata.count}/{totalReview}</div>
                 </div>
             ))}
 

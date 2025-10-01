@@ -3,8 +3,8 @@ import { Plus, X, Minus } from "lucide-react";
 
 import './Drawer.css';
 
-function Counter() {
-    const [count, setCount] = useState(0);
+function Counter({ count, setCount}) {
+    
     return (
 
         <div className="counter">
@@ -17,20 +17,29 @@ function Counter() {
 }
 
 export function Drawer() {
-    
+    const [count, setCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
+
+    function handleCancel(){
+        setCount(0);
+        setIsVisible(false);
+    }
+
+    function handleSubmit(){
+        setIsVisible(false);
+    }
+
     return (
         <div className='drawer-container'  >
             {isVisible ? <button className="user-button" onClick={() => setIsVisible(false)}>Hide Drawer</button> : <button className="user-button" onClick={() => setIsVisible(true)}>Show Drawer</button>}
-            
-            
+                {count && <div>{count}</div>}
                 <div className={isVisible? "drawer open": "drawer"}>
                     {/* <button   onClick={() => setIsVisible(false)} className="close-button"><X size={15}/></button> */}
                     <h2>Set your calorie count</h2>
                     <p>Daily calorie intake</p>
-                    <Counter />
-                    <button className="user-button">Submit</button>
-                    <button className="user-button">Cancel</button>
+                    <Counter count={count} setCount={setCount} />
+                    <button className="user-button" onClick={handleSubmit}>Submit</button>
+                    <button className="user-button" onClick={handleCancel}>Cancel</button>
                 </div>
             
         </div>
